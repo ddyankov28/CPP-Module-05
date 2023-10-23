@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:54:28 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/22 12:55:18 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:03:11 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 Bureaucrat::Bureaucrat() : _name("Default"), _grade(150)
 {
-    std::cout << GREEN << "Bureaucrat Default constuctor called" << RESET << std::endl;
+    std::cout << GREEN << "Bureaucrat Default constructor called" << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
     checkGrade(grade);
     _grade = grade;
-    std::cout << GREEN << "Bureaucrat Param constuctor called" << RESET << std::endl;
+    std::cout << GREEN << "Bureaucrat Param constructor called" << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& instance)
@@ -42,12 +42,12 @@ Bureaucrat::~Bureaucrat()
     std::cout << RED << "Bureaucrat Destructor called" << RESET << std::endl;
 }
 
-std::string Bureaucrat::getName()
+std::string Bureaucrat::getName() const
 {
     return _name;
 }
 
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
     return _grade;
 }
@@ -70,15 +70,15 @@ void    Bureaucrat::decrementGrade()
 
 const char*    Bureaucrat::GradeTooHighException::what()const throw()
 {
-    return "Bureaucrat Grade is Too High";
+    return "Grade is Too High";
 }
 
 const char*    Bureaucrat::GradeTooLowException::what()const throw()
 {
-    return "Bureaucrat Grade is Too Low";   
+    return "Grade is Too Low";   
 }
 
-void    Bureaucrat::checkGrade(int grade)
+void    Bureaucrat::checkGrade(int grade) const
 {
     if (grade < 1)
         throw Bureaucrat::GradeTooHighException();

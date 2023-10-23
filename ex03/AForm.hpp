@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:57:50 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/23 17:04:25 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:15:48 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef FORM_HPP
-# define FORM_HPP
+# ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include "Bureaucrat.hpp"
+# include <fstream>
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
     private:
         const std::string   _name;
@@ -25,22 +26,23 @@ class Form
         const int           _gradeSign;
         const int           _gradeExec;
     public:
-        Form();                                 // default constr
-        Form(std::string name, int gradeSign, int gradeExec); // param constr
-        Form(const Form& instance);             // copy constr
-        Form& operator=(const Form& instance);  // copy assign oper
-        ~Form();                                // destructor
+        AForm();                                 // default constr
+        AForm(std::string name, int gradeSign, int gradeExec); // param constr
+        AForm(const AForm& instance);             // copy constr
+        AForm& operator=(const AForm& instance);  // copy assign oper
+        virtual ~AForm();                                // destructor
         
         //   getters   //
-        std::string getName() const;
+        std::string getName();
         bool        getIsSigned() const;
         int         getSignGrade() const;
         int         getExecGrade() const;
 
-        void        checkGrade(int gradeSign, int gradeExec) const;
+        void        checkGrade(int gradeSign, int gradeExec);
         void        beSigned(Bureaucrat& bur);
+        virtual void        execute(Bureaucrat const & executor) const = 0;
         
-        //   exceptions   //
+        //   exceptions   //                            
         class GradeTooHighException : public std::exception
         {
             public:
@@ -57,6 +59,6 @@ class Form
         // throw() = cant throw any exceptions ( noexcept )
 };
 
-std::ostream& operator<<(std::ostream& o, Form& form);
+std::ostream& operator<<(std::ostream& o, AForm& AForm);
 
 #endif

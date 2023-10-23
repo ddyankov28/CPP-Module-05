@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:26:05 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/22 13:12:48 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:04:57 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 Form::Form() : _name("Default"), _isSigned(false), _gradeSign(150), _gradeExec(100)
 {
-    std::cout << GREEN << "Form Default constuctor called" << RESET << std::endl;
+    std::cout << GREEN << "Form Default constructor called" << RESET << std::endl;
 }
 
 Form::Form(std::string name, int gradeSign, int gradeExec) : _name(name), _isSigned(false), _gradeSign(gradeSign), _gradeExec(gradeExec)
 {
     checkGrade(gradeSign, gradeExec);
-    std::cout << GREEN << "Form Param constuctor called" << RESET << std::endl;
+    std::cout << GREEN << "Form Param constructor called" << RESET << std::endl;
 }
 
 Form::Form(const Form& instance) : _name(instance._name), _isSigned(false), _gradeSign(instance._gradeSign), _gradeExec(instance._gradeExec)
@@ -41,15 +41,15 @@ Form::~Form()
 
 const char*    Form::GradeTooLowException::what()const throw()
 {
-    return "Form Grade is Too Low\nOR Bureaucrat Grade is too low to sign the Form";   
+    return "Grade is Too Low";   
 }
 
 const char*    Form::GradeTooHighException::what()const throw()
 {
-    return "Form Grade is Too High";   
+    return "Grade is Too High";   
 }
 
-void    Form::checkGrade(int gradeSign, int gradeExec)
+void    Form::checkGrade(int gradeSign, int gradeExec) const
 {
     if (gradeSign < 1 || gradeExec < 1)
         throw Form::GradeTooHighException();
@@ -65,22 +65,22 @@ void    Form::beSigned(Bureaucrat& bur)
         throw Form::GradeTooLowException();
 }
 
-std::string Form::getName()
+std::string Form::getName() const
 {
     return _name;
 }
 
-bool    Form::getIsSigned()
+bool    Form::getIsSigned() const
 {
     return _isSigned;
 }
 
-int   Form::getSignGrade()
+int   Form::getSignGrade() const
 {
     return _gradeSign;
 }
 
-int   Form::getExecGrade()
+int   Form::getExecGrade() const
 {
     return _gradeExec;
 }

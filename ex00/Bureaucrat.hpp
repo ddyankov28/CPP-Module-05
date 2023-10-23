@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 14:06:33 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/22 13:01:44 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:01:10 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ class Bureaucrat
         Bureaucrat& operator=(const Bureaucrat& instance);  // copy assignment operator
         ~Bureaucrat();                                      // destructor
         
-        std::string getName();
-        int         getGrade();
+        std::string getName() const;
+        int         getGrade() const;
         void        incrementGrade();
         void        decrementGrade();
-        void        checkGrade(int grade);
+        void        checkGrade(int grade) const;
         
         class GradeTooHighException : public std::exception
         {

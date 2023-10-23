@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:53:59 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/23 17:02:48 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/10/23 11:49:06 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # define LINE  std::cout << "-------------------------" << std::endl;
 
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -44,7 +44,8 @@ class Bureaucrat
         void        incrementGrade();
         void        decrementGrade();
         void        checkGrade(int grade) const;
-        void        signForm(Form& form);
+        void        signAForm(AForm& AForm);
+        void        executeForm(AForm const & form);
         
         class GradeTooHighException : public std::exception
         {

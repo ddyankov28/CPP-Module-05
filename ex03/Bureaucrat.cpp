@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/11 14:07:13 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/23 17:01:47 by ddyankov         ###   ########.fr       */
+/*   Created: 2023/10/15 10:54:28 by ddyankov          #+#    #+#             */
+/*   Updated: 2023/10/23 12:02:12 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ void    Bureaucrat::decrementGrade()
 
 const char*    Bureaucrat::GradeTooHighException::what()const throw()
 {
-    return "Bureaucrat Grade is Too High";
+    return "Grade is Too High";
 }
 
 const char*    Bureaucrat::GradeTooLowException::what()const throw()
 {
-    return "Bureaucrat Grade is Too Low";   
+    return "Grade is Too Low";   
 }
 
 void    Bureaucrat::checkGrade(int grade) const
@@ -86,8 +86,40 @@ void    Bureaucrat::checkGrade(int grade) const
         throw Bureaucrat::GradeTooLowException();     
 }
 
+void    Bureaucrat::signAForm(AForm& AForm)
+{
+    try
+    {
+        AForm.beSigned(*this);
+        std::cout << "Bureaucrat called " << getName() << " signed";
+        std::cout << " a AForm called " << AForm.getName() << std::endl;  
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr  << URED << "Bureaucrat called " << getName() << " couldn't";
+        std::cerr << " sign a AForm called " << AForm.getName() << " because\n";
+        std::cerr << e.what() << RESET << std::endl;
+    }
+           
+}
+
 std::ostream& operator<<(std::ostream& o, Bureaucrat& instance)
 {
     o << instance.getName() << ", Bureaucrat grade is " << instance.getGrade();
     return o;
+}
+
+void    Bureaucrat::executeForm(AForm const & form)
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << "Bureaucrat called " << getName() << " executed";
+        std::cout << " a form " << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << URED << "Bureaucrat called " << getName() << " couldn't";
+        std::cerr << " execute a form" << " because\n" << e.what() << RESET << std::endl;
+    }
 }

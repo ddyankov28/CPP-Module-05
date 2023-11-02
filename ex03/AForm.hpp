@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:57:50 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/23 17:15:48 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:41:04 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class AForm
         int         getExecGrade() const;
 
         void        checkGrade(int gradeSign, int gradeExec);
-        void        beSigned(Bureaucrat& bur);
+        void        beSigned(const Bureaucrat& bur);
         virtual void        execute(Bureaucrat const & executor) const = 0;
         
         //   exceptions   //                            

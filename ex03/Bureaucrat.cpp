@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:54:28 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/23 12:02:12 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:41:59 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void    Bureaucrat::checkGrade(int grade) const
         throw Bureaucrat::GradeTooLowException();     
 }
 
-void    Bureaucrat::signAForm(AForm& AForm)
+void    Bureaucrat::signAForm(AForm& AForm) const
 {
     try
     {
@@ -109,7 +109,7 @@ std::ostream& operator<<(std::ostream& o, Bureaucrat& instance)
     return o;
 }
 
-void    Bureaucrat::executeForm(AForm const & form)
+void    Bureaucrat::executeForm(AForm const & form) const
 {
     try
     {

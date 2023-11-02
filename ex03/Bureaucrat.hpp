@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 10:53:59 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/23 11:49:06 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:41:54 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ class Bureaucrat
         void        incrementGrade();
         void        decrementGrade();
         void        checkGrade(int grade) const;
-        void        signAForm(AForm& AForm);
-        void        executeForm(AForm const & form);
+        void        signAForm(AForm& AForm) const;
+        void        executeForm(AForm const & form) const;
         
         class GradeTooHighException : public std::exception
         {

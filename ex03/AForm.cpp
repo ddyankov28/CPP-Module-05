@@ -6,7 +6,7 @@
 /*   By: ddyankov <ddyankov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 11:26:05 by ddyankov          #+#    #+#             */
-/*   Updated: 2023/10/23 12:02:03 by ddyankov         ###   ########.fr       */
+/*   Updated: 2023/10/25 16:40:56 by ddyankov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void    AForm::checkGrade(int gradeSign, int gradeExec)
         throw AForm::GradeTooLowException();
 }
 
-void    AForm::beSigned(Bureaucrat& bur)
+void    AForm::beSigned(const Bureaucrat& bur)
 {
     if (bur.getGrade() <= _gradeSign)
         _isSigned = true;

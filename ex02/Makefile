@@ -68,3 +68,4 @@ fclean: clean
 		@echo "$(RED_BACK)🧹🧹🧹Executable was cleaned🧹🧹🧹$(COLOUR_END)"
 
 re: fclean all
+-include $(DEPS)
